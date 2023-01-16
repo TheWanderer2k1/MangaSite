@@ -1,0 +1,47 @@
+<table>
+    <tr>
+        <td>
+            <button (click)="onPrevious()">Previous</button>
+        </td>
+        <td>
+            <form #selectChapter="ngForm" (change)="onChange(selectChapter.value)">
+                <select name="chapter" id="" ngModel>
+                    <option value="" disabled>Choose a chapter</option>
+                    <option *ngFor="let chapter of listChapter, index as i" ngValue="{{i}}">
+                        {{chapter.name}}
+                    </option>
+                </select>
+            </form>
+        </td>
+        <td>
+            <button (click)="onNext()">Next</button>
+        </td>
+    </tr>
+</table>
+<p></p>
+<button (click)="onClick()">{{currentManga}}</button>
+<button>{{currentChapter.name}}</button>
+<div *ngFor="let img of currentChapter.images">
+    <img src="{{img.path}}" alt="images">
+</div>
+<p></p>
+<table>
+    <tr>
+        <td>
+            <button (click)="onPrevious()">Previous</button>
+        </td>
+        <td>
+            <form #selectChapter1="ngForm" (change)="onChange(selectChapter1.value)">
+                <select name="chapter" id="" ngModel>
+                    <option value="" disabled>Choose a chapter</option>
+                    <option *ngFor="let chapter of listChapter, index as i" ngValue="{{i}}">
+                        {{chapter.name}}
+                    </option>
+                </select>
+            </form>
+        </td>
+        <td>
+            <button (click)="onNext()">Next</button>
+        </td>
+    </tr>
+</table>

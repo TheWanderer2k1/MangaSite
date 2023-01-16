@@ -1,0 +1,45 @@
+<div class="container text-warning">
+    <div class="row">
+        <div class="col-3">
+            <img src="{{manga.thumbnail}}" class="border border-secondary" alt="thumbnail_image"><br>
+        </div>
+        <div class="col-9">
+            <div class="text-info h3">{{manga.name}}</div>
+            <div class="container">
+                <div class="row pt-3">
+                    <div class="col-2 text-white">Author:</div>
+                    <div class="col-8" (click)="searchByAuthor(manga.author)" style="color:#FF8C00;">{{manga.author}}</div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-2 text-white">Genre:</div>
+                    <div class="col-8 text-success">{{manga.genre}}</div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-2 text-white">Description:</div>
+                    <div class="col-8 text-white-50">{{manga.description}}</div>
+                </div>
+                <div class="row"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-warning my-4 px-5">
+    <table class="table table-dark table-hover">
+        <thead>
+            <th scope="col" class="text-warning">Chapters:</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let chapter of manga.listChapter, index as i">
+                <td (click)="selectChapter(manga.name, i)">{{chapter.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <div>Chapters:</div>
+    <div *ngFor="let chapter of manga.listChapter, index as i">
+        <ul (click)="selectChapter(manga.name, i)">{{chapter.name}}</ul>
+    </div> -->
+</div>
+<!-- <div class="container">
+
+</div> -->

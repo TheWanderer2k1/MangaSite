@@ -1,0 +1,47 @@
+<div class="container-fluid text-warning">
+    <div class="row">
+        <div class="col-8">
+            <div class="container">
+                <div class="row">
+                    <h4>List manga</h4>
+                </div>
+                <div class="row">
+                    <div style="display: grid; row-gap: 30px;">
+                        <div *ngFor="let manga of listManga; index as i">
+                                <div class="d-flex flex-row p-3 border border-secondary" style="background-color: #282a36; color: #999;">
+                                    <div>
+                                        <img src="{{manga.thumbnail}}" class="img-thumbnail" alt="thumbnail_image" width="190" height="235" (click)="selectManga(manga.name)">
+                                    </div>
+                                    <div class="px-4" style="width: 450px;">
+                                        <div class="text-info text-uppercase py-2" (click)="selectManga(manga.name)">{{manga.name}}</div>
+                                        <div class="py-2" (click)="searchByAuthor(manga.author)" style="color:#FF8C00;">{{manga.author}}</div>
+                                        <div class="py-2">Genre: {{manga.genre}}</div>
+                                        <div class="text-truncate-container py-2" >{{manga.description}}</div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container" style="padding-left: 115px; padding-right: 115px;">
+                <div class="row text-center">
+                    <h4>Genre</h4>
+                </div>
+                <div class="row">
+                    <div class="container text-center text-info">
+                        <div class="row border" *ngFor="let genre of listGenre" style="background-color: #282a36;">
+                            <div class="col" >
+                                <a href="javascript:void(0);" (click)="searchByGenre(genre)">{{genre}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

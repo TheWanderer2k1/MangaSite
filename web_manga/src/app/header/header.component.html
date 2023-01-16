@@ -1,0 +1,46 @@
+<!-- <div class="container"> -->
+    <div class="row mt-0 ms-1 px-2 p-3">
+        <div class="col">
+            <img src="https://drive.google.com/uc?export=view&id=13vmbqkiOKmHjRmdF1MpNikguUAsns0Ud" alt="img" width="180px" height="50px" routerLink="/homepage">
+        </div>
+        <div class="col">
+            <form #searchForm="ngForm" (ngSubmit)="onClickSubmit(searchForm.value)">
+                <div class="d-flex flex-row-reverse">
+                    <div>
+                        <input type="submit" value="search" class="btn btn-outline-primary">
+                    </div>
+                    <div>
+                        <input type="search" name="str" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" ngModel>
+                    </div>
+                    <div>
+                        <select name="select" class="form-select" style="width: auto;" aria-label="Default select example" ngModel>
+                            <option value="" disabled>Search by</option>
+                            <option ngValue="byName">By name</option>
+                            <option ngValue="byAuthor">By author</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- </div> -->
+    
+
+<!-- <div class="container"> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/homepage">Homepage</a>
+                <!-- <a class="nav-item nav-link" >Genre</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- <button routerLink="/homepage">
+        Homepage
+    </button>
+    <button>
+        Thể loại
+    </button> -->
+<!-- </div> -->
+
