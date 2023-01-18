@@ -1,26 +1,6 @@
 <?php
     //echo $_GET['name'];
-    class chapter{
-        public $ID_chapter;
-        public $name;
-        public $images = [];
-
-        public function __construct($ID_chapter, $name, $images){
-            $this->ID_chapter = $ID_chapter;
-            $this->name = $name;
-            $this->images = $images;
-        }
-    }
-
-    class image{
-        public $ID_img;
-        public $path;
-
-        public function __construct($ID_img, $path){
-            $this->ID_img = $ID_img;
-            $this->path = $path;
-        }
-    }
+    require('class.php');
 
     $arrOfChapter = [];
     $arrOfImg = [];

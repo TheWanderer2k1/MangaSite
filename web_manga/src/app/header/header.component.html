@@ -34,6 +34,15 @@
                 <!-- <a class="nav-item nav-link" >Genre</a> -->
             </div>
         </div>
+        <div class="collapse navbar-collapse justify-content-end"> 
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/login" name="loginOrSignup">Login</a>
+                <a class="nav-item nav-link" name="loginOrSignup">/</a>
+                <a class="nav-item nav-link" name="loginOrSignup">Sign up</a>
+                <a class="nav-item nav-link" id="username">Hi! {{username}}</a>
+                <a class="nav-item nav-link" (click)="onClickLogout()" id="Logout">Logout</a>
+            </div>
+        </div>  
     </nav>
 
     <!-- <button routerLink="/homepage">

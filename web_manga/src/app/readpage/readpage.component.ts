@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { IChapter } from '../manga';
 import { MangaService } from '../manga.service';
-import { TransferMangaService } from '../transfer-manga.service';
 
 @Component({
   selector: 'app-readpage',

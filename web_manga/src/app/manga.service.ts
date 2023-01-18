@@ -16,6 +16,8 @@ export class MangaService {
 
   private _urlSearch: string = "http://localhost/webmanga/searchManga.php";
 
+  private _urlAuthen: string = "http://localhost/webmanga/login.php";
+
   constructor(private http: HttpClient) { }
 
   getListManga(): Observable<IManga[]>{
@@ -48,4 +50,14 @@ export class MangaService {
                   "sport", "supernatural"];
     return genres;
   }
+
+  // userAuthen(username: string, pwd: string): any{
+  //   //console.log(this._urlAuthen + '?username=' + username + '&pwd=' + pwd);
+  //   return fetch(this._urlAuthen + '?username=' + username + '&pwd=' + pwd).then((res) => res.json()).then(
+  //     msg => {
+  //       //console.log(msg);
+  //       return msg.msg;
+  //     }
+  //   )
+  // }
 }

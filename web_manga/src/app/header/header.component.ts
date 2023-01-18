@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 import { IManga } from '../manga';
 import { MangaService } from '../manga.service';
 import { SearchResultScreenComponent } from '../search-result-screen/search-result-screen.component';
@@ -11,11 +12,29 @@ import { SearchService } from '../search.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  username: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _login: LoginService) { }
 
   ngOnInit(): void {
+    let elements = document.getElementsByName("loginOrSignup");
+    this.username = this._login.getUser();
 
+    if (this.username != null){
+      elements.forEach(e => {
+        e.hidden = true;
+      });
+  
+      document.getElementById("username")!.hidden = false;
+      document.getElementById("Logout")!.hidden = false;
+    }else{
+      elements.forEach(e => {
+        e.hidden = false;
+      });
+  
+      document.getElementById("username")!.hidden = true;
+      document.getElementById("Logout")!.hidden = true;
+    }
   }
 
   onClickSubmit(data: any){
@@ -24,6 +43,13 @@ export class HeaderComponent implements OnInit {
     if (searchBy == "" || searchBy == undefined)
       searchBy = 'byName';
     this.router.navigate(['/search', searchBy, data.str.trim()]).then(()=>{
+      window.location.reload();
+    });
+  }
+
+  onClickLogout(){
+    this._login.userLogout();
+    this.router.navigate(['/homepage']).then(()=>{
       window.location.reload();
     });
   }

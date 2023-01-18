@@ -1,22 +1,5 @@
 <?php
-    class manga{
-        public $ID_manga;
-        public $name;
-        public $author;
-        public $numberOfRead;
-        public $thumbnail;
-        public $description;
-        //public $listChapter = [];
-
-        public function __construct($ID_manga, $name, $author, $numberOfRead, $thumbnail, $description){
-            $this->ID_manga = $ID_manga;
-            $this->name = $name;
-            $this->author = $author;
-            $this->numberOfRead = $numberOfRead;
-            $this->thumbnail = $thumbnail;
-            $this->description = $description;
-        }
-    }
+    require('class.php');
 
     $arrOfManga = [];
     try{
@@ -33,7 +16,7 @@
         $result = $conn->query($query);
 
         while ($row = $result->fetch_assoc()){
-            $objManga = new manga($row['ID_manga'], $row['name'], $row['author'],$row['numberOfRead'], $row['thumbnail'],$row['description']);
+            $objManga = new manga($row['ID_manga'], $row['name'], $row['author'], $row['genre'], $row['numberOfRead'], $row['thumbnail'],$row['description'], []);
             $arrOfManga[] = $objManga;
         }
 

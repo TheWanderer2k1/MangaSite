@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { IManga } from '../manga';
 import { MangaService } from '../manga.service';
 import { SearchService } from '../search.service';
-import { TransferMangaService } from '../transfer-manga.service';
 
 @Component({
   selector: 'app-search-result-screen',
