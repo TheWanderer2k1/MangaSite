@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2023 at 03:42 PM
+-- Generation Time: Jan 18, 2023 at 09:05 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -40,6 +40,18 @@ INSERT INTO `chapter` (`ID_chapter`, `name`) VALUES
 (1, 'Chap_1_Monster'),
 (2, 'Chap_1_test1'),
 (3, 'Chap_2_test1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment_on_manga`
+--
+
+CREATE TABLE `comment_on_manga` (
+  `ID_manga` int(11) NOT NULL,
+  `ID_reader` int(11) NOT NULL,
+  `cmt` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -216,7 +228,9 @@ CREATE TABLE `reader` (
 --
 
 INSERT INTO `reader` (`ID_reader`, `username`, `pwd`) VALUES
-(1, 'test1', '123');
+(1, 'test1', '123'),
+(2, 'reader2', '123456'),
+(3, 'reader3', '123456');
 
 --
 -- Indexes for dumped tables
@@ -227,6 +241,13 @@ INSERT INTO `reader` (`ID_reader`, `username`, `pwd`) VALUES
 --
 ALTER TABLE `chapter`
   ADD PRIMARY KEY (`ID_chapter`);
+
+--
+-- Indexes for table `comment_on_manga`
+--
+ALTER TABLE `comment_on_manga`
+  ADD KEY `fk_cmt_manga` (`ID_manga`),
+  ADD KEY `fk_cmt_reader` (`ID_reader`);
 
 --
 -- Indexes for table `contain`
@@ -286,11 +307,18 @@ ALTER TABLE `manga`
 -- AUTO_INCREMENT for table `reader`
 --
 ALTER TABLE `reader`
-  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comment_on_manga`
+--
+ALTER TABLE `comment_on_manga`
+  ADD CONSTRAINT `fk_cmt_manga` FOREIGN KEY (`ID_manga`) REFERENCES `manga` (`ID_manga`),
+  ADD CONSTRAINT `fk_cmt_reader` FOREIGN KEY (`ID_reader`) REFERENCES `reader` (`ID_reader`);
 
 --
 -- Constraints for table `contain`
