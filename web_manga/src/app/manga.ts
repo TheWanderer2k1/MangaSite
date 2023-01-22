@@ -19,3 +19,14 @@ export interface IImg{
     ID_img: number,
     path: string
 }
+
+export interface IUser{
+    ID_reader: number,
+    username: string,
+    expiry: number
+}
+
+export interface IComment{
+    username: string,
+    cmt: string
+}

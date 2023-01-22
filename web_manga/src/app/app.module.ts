@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
 import { SearchService } from './search.service';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SearchService } from './search.service';
     HeaderComponent,
     FooterComponent,
     routingComponents,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

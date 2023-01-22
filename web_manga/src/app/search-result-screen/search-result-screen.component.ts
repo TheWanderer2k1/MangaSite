@@ -38,11 +38,4 @@ export class SearchResultScreenComponent implements OnInit {
     );
   }
 
-  // searchByAuthor(author: string){
-  //   //console.log(author);
-  //   this.route.navigate(['/search', 'byAuthor', author]).then(function(){
-  //     window.location.reload();
-  //   });
-  // }
-
 }

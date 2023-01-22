@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IUser } from './manga';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,9 @@ export class LoginService {
 
   constructor() { }
 
-  userLogin(username: string){
-    let userObj = {
+  userLogin(ID_reader: number, username: string){
+    let userObj: IUser = {
+      ID_reader: ID_reader,
       username: username,
       expiry: new Date().getTime() + 86400000 //one day
     }
@@ -20,16 +22,17 @@ export class LoginService {
     localStorage.removeItem('loginSession');
   }
 
-  getUser(): any{
+  getUser(): IUser{
     let userObj = JSON.parse(localStorage.getItem('loginSession')!);
 
     if (userObj == null)
-      return null;
+      return null!;
 
     if (new Date().getTime() > userObj.expiry){
+      userObj.ID_reader = null;
       userObj.username = null;
       this.userLogout();
     }
-    return userObj.username;
+    return userObj;
   }
 }

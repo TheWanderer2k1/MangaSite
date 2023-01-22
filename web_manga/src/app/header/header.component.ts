@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
-import { IManga } from '../manga';
+import { IManga, IUser } from '../manga';
 import { MangaService } from '../manga.service';
 import { SearchResultScreenComponent } from '../search-result-screen/search-result-screen.component';
 import { SearchService } from '../search.service';
@@ -13,20 +13,22 @@ import { SearchService } from '../search.service';
 })
 export class HeaderComponent implements OnInit {
   username: string;
+  user: IUser;
 
   constructor(private router: Router, private _login: LoginService) { }
 
   ngOnInit(): void {
     let elements = document.getElementsByName("loginOrSignup");
-    this.username = this._login.getUser();
+    this.user = this._login.getUser();
 
-    if (this.username != null){
+    if (this.user != null){
       elements.forEach(e => {
         e.hidden = true;
       });
   
       document.getElementById("username")!.hidden = false;
       document.getElementById("Logout")!.hidden = false;
+      this.username = this.user.username;
     }else{
       elements.forEach(e => {
         e.hidden = false;

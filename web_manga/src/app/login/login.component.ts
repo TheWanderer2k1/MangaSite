@@ -8,7 +8,8 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public message: string;
+  ID_reader: number;
+  username: string;
 
   constructor(private route: Router, private _login: LoginService) { }
 
@@ -17,11 +18,10 @@ export class LoginComponent implements OnInit {
 
   onClickSubmit(data: any){
     fetch('http://localhost/webmanga/login.php' + '?username=' + data.username + '&pwd=' + data.pwd).then((res) => res.json()).then(
-      msg =>{
-        this.message = msg.msg;
-        //console.log(this.message);
-        if (this.message == 'ok!'){
-          this._login.userLogin(data.username);
+      response =>{
+        console.log(response);
+        if (response != null || response != undefined){
+          this._login.userLogin(response.ID_reader ,response.username);
 
           this.route.navigate(['/homepage']).then(()=>{
             window.location.reload();
