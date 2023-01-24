@@ -7,10 +7,10 @@
         </thead>
         <tbody>
             <tr>
-                <div *ngIf="isLogin">
+                <div *ngIf="isLogin" class="container">
                     <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm.value)">
                         <input type="text" name="cmt" class="form-control" placeholder="Enter comment" ngModel>
-                        <input type="submit" value="Comment" class="btn btn-primary">
+                        <input type="submit" value="Comment" class="btn btn-secondary btn-sm">
                     </form>
                 </div>
             </tr>

@@ -6,6 +6,7 @@ import { MangaInfoComponent } from './manga-info/manga-info.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ReadpageComponent } from './readpage/readpage.component';
 import { SearchResultScreenComponent } from './search-result-screen/search-result-screen.component';
+import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/homepage', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'read/:name/:chapter', component: ReadpageComponent},
   {path: 'search/:searchBy/:str', component: SearchResultScreenComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'signin', component: SigninComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -22,4 +24,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [HomepageComponent, MangaInfoComponent, ReadpageComponent, SearchResultScreenComponent, PageNotFoundComponent, LoginComponent];
+export const routingComponents = [HomepageComponent, MangaInfoComponent, ReadpageComponent, SearchResultScreenComponent, PageNotFoundComponent, LoginComponent, SigninComponent];

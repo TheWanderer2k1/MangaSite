@@ -11,6 +11,7 @@ import { SearchService } from '../search.service';
 })
 export class MangaInfoComponent implements OnInit {
   public manga: IManga;
+  noChapter:boolean;
 
   constructor( private activateRoute: ActivatedRoute, private _mangaService: MangaService, private route: Router, private _search: SearchService) { }
 
@@ -18,6 +19,10 @@ export class MangaInfoComponent implements OnInit {
     this._mangaService.getManga(this.activateRoute.snapshot.paramMap.get('name')!)
                       .subscribe(data => {
                         this.manga = data;
+                        if(this.manga.listChapter.length > 0)
+                          this.noChapter = false;
+                        else
+                          this.noChapter = true;
                       })
   }
 

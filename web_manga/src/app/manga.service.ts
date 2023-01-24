@@ -22,6 +22,8 @@ export class MangaService {
 
   private _urlAddCmt: string = "http://localhost/webmanga/addComment.php";
 
+  private _urlSignin: string = "http://localhost/webmanga/signin.php";
+
   constructor(private http: HttpClient) { }
 
   getListManga(): Observable<IManga[]>{
@@ -69,6 +71,14 @@ export class MangaService {
     body = body.set('ID_reader', ID_reader);
     body = body.set('cmt', cmt);
     return this.http.post<IComment>(this._urlAddCmt, body, {headers: myHeaders});
+  }
+
+  signin(username: string, pwd: string):Observable<number>{
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('username', username);
+    body = body.set('pwd', pwd);
+    return this.http.post<number>(this._urlSignin, body, {headers: myHeaders});
   }
 
 

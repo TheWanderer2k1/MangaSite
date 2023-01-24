@@ -30,6 +30,9 @@
             <th scope="col" class="text-warning">Chapters:</th>
         </thead>
         <tbody>
+            <div *ngIf="noChapter">
+                Sorry, no chapters yet!
+            </div>
             <tr *ngFor="let chapter of manga.listChapter, index as i">
                 <td (click)="selectChapter(manga.name, i)">{{chapter.name}}</td>
             </tr>
