@@ -1,14 +1,26 @@
 <div>
-    <table class="table table-dark">
+    <table class="table table-borderless text-light">
         <thead>
-            <tr>
-                <th class="text-warning">
-                    Comment section:
+                <th scope="col" class="text-warning">
+                    Comment section: 
                 </th>
-            </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let cmt of comments">
+            <tr>
+                <div *ngIf="isLogin">
+                    <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm.value)">
+                        <input type="text" name="cmt" class="form-control" placeholder="Enter comment" ngModel>
+                        <input type="submit" value="Comment" class="btn btn-primary">
+                    </form>
+                </div>
+            </tr>
+
+            <tr>
+                <td>
+                    ({{comments.length}} comments)
+                </td>
+            </tr>
+            <tr *ngFor="let cmt of comments.reverse()">
                 <td>
                     <div class="d-flex flex-column">
                         <div class="text-info">
@@ -22,10 +34,10 @@
             </tr>
         </tbody>
     </table>
-    <div *ngIf="isLogin">
+    <!-- <div *ngIf="isLogin">
         <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm.value)">
             <input type="text" name="cmt" class="form-control" placeholder="Enter comment" ngModel>
             <input type="submit" value="Comment" class="btn btn-primary">
         </form>
-    </div>
+    </div> -->
 </div>
