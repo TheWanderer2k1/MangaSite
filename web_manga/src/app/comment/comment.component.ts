@@ -21,16 +21,16 @@ export class CommentComponent implements OnInit {
     if (this._login.getUser() != null){
       this.user = this._login.getUser();
       this.isLogin = true;
-
-      this._manga.getListComments(this.manga.ID_manga).subscribe(
-        data => {
-          //if (data.length > 0)
-            this.comments = data;
-        }
-      );
     }else{
       this.isLogin = false;
     }
+
+    this._manga.getListComments(this.manga.ID_manga).subscribe(
+      data => {
+        //if (data.length > 0)
+          this.comments = data;
+      }
+    );
   }
 
   onSubmit(data: any){
