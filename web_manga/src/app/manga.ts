@@ -28,5 +28,6 @@ export interface IUser{
 
 export interface IComment{
     username: string,
-    cmt: string
+    cmt: string,
+    date: string
 }

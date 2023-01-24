@@ -1,11 +1,31 @@
-<div>
+<div *ngIf="isLogin">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th class="text-warning">
+                    Comment section:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cmt of comments">
+                <td>
+                    <div class="d-flex flex-column">
+                        <div class="text-info">
+                            {{cmt.username}}: {{cmt.date}}
+                        </div>
+                        <div class="px-3">
+                            {{cmt.cmt}}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <div>
-        comments go here
-    </div>
-    <div>
-        <form action="">
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <input type="submit" value="Comment">
+        <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm.value)">
+            <input type="text" name="cmt" class="form-control" placeholder="Enter comment" ngModel>
+            <input type="submit" value="Comment" class="btn btn-primary">
         </form>
     </div>
     

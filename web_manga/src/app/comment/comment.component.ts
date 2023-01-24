@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
-import { IComment, IManga } from '../manga';
+import { IComment, IManga, IUser } from '../manga';
+import { MangaService } from '../manga.service';
 
 @Component({
   selector: 'app-comment',
@@ -10,13 +11,34 @@ import { IComment, IManga } from '../manga';
 export class CommentComponent implements OnInit {
   @Input() manga: IManga;
   comments: IComment[];
-  comment: IComment;
-  username: string;
+  //comment: IComment;
+  user: IUser;
+  isLogin: boolean;
 
-  constructor(private _login: LoginService) { }
+  constructor(private _login: LoginService, private _manga: MangaService) { }
 
   ngOnInit(): void {
-    this.username = this._login.getUser().username;
+    if (this._login.getUser() != null){
+      this.user = this._login.getUser();
+      this.isLogin = true;
+
+      this._manga.getListComments(this.manga.ID_manga).subscribe(
+        data => {
+          //if (data.length > 0)
+            this.comments = data;
+        }
+      );
+    }else{
+      this.isLogin = false;
+    }
   }
 
+  onSubmit(data: any){
+    this._manga.addComment(this.manga.ID_manga, this.user.ID_reader, data.cmt).subscribe(
+      data =>{
+        //this.comment = data;
+        this.comments.push(data);
+      }
+    )
+  }
 }

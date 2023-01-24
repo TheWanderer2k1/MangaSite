@@ -29,9 +29,8 @@ export class LoginService {
       return null!;
 
     if (new Date().getTime() > userObj.expiry){
-      userObj.ID_reader = null;
-      userObj.username = null;
       this.userLogout();
+      userObj = null;
     }
     return userObj;
   }

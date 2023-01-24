@@ -1,7 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { IChapter, IManga } from './manga';
+import { IChapter, IComment, IManga } from './manga';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,10 @@ export class MangaService {
   private _urlSearch: string = "http://localhost/webmanga/searchManga.php";
 
   private _urlAuthen: string = "http://localhost/webmanga/login.php";
+
+  private _urlGetCmt: string = "http://localhost/webmanga/getListComments.php";
+
+  private _urlAddCmt: string = "http://localhost/webmanga/addComment.php";
 
   constructor(private http: HttpClient) { }
 
@@ -50,6 +54,24 @@ export class MangaService {
                   "sport", "supernatural"];
     return genres;
   }
+
+  getListComments(ID_manga: number): Observable<IComment[]>{
+    let queryParam = new HttpParams();
+    queryParam = queryParam.append("ID_manga", ID_manga);
+
+    return this.http.get<IComment[]>(this._urlGetCmt, {params: queryParam});
+  }
+
+  addComment(ID_manga: number, ID_reader: number, cmt: string): Observable<IComment>{
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('ID_manga', ID_manga);
+    body = body.set('ID_reader', ID_reader);
+    body = body.set('cmt', cmt);
+    return this.http.post<IComment>(this._urlAddCmt, body, {headers: myHeaders});
+  }
+
+
 
   // userAuthen(username: string, pwd: string): any{
   //   //console.log(this._urlAuthen + '?username=' + username + '&pwd=' + pwd);
