@@ -14,28 +14,34 @@ import { SearchService } from '../search.service';
 export class HeaderComponent implements OnInit {
   username: string;
   user: IUser;
+  hide: boolean;
 
   constructor(private router: Router, private _login: LoginService) { }
 
   ngOnInit(): void {
-    let elements = document.getElementsByName("loginOrSignup");
+    //let elements = document.getElementsByName("loginOrSignup");
     this.user = this._login.getUser();
 
     if (this.user != null){
-      elements.forEach(e => {
-        e.hidden = true;
-      });
-  
-      document.getElementById("username")!.hidden = false;
-      document.getElementById("Logout")!.hidden = false;
+      // elements.forEach(e => {
+      //   e.hidden = true;
+      // });
+      this.hide = true;
+
+      // document.getElementById("username")!.hidden = false;
+      // document.getElementById("Logout")!.hidden = false;
+
+
       this.username = this.user.username;
     }else{
-      elements.forEach(e => {
-        e.hidden = false;
-      });
+      // elements.forEach(e => {
+      //   e.hidden = false;
+      // });
   
-      document.getElementById("username")!.hidden = true;
-      document.getElementById("Logout")!.hidden = true;
+      this.hide = false;
+
+      // document.getElementById("username")!.hidden = true;
+      // document.getElementById("Logout")!.hidden = true;
     }
   }
 
@@ -55,9 +61,4 @@ export class HeaderComponent implements OnInit {
       window.location.reload();
     });
   }
-
-  // onClick(){
-  //   this.router.navigate(['/homepage']);
-  // }
-
 }

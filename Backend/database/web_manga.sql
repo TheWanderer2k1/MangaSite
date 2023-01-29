@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2023 at 09:05 AM
+-- Generation Time: Jan 29, 2023 at 03:12 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -48,10 +48,27 @@ INSERT INTO `chapter` (`ID_chapter`, `name`) VALUES
 --
 
 CREATE TABLE `comment_on_manga` (
+  `id` int(11) NOT NULL,
   `ID_manga` int(11) NOT NULL,
   `ID_reader` int(11) NOT NULL,
-  `cmt` varchar(1000) NOT NULL
+  `cmt` varchar(1000) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comment_on_manga`
+--
+
+INSERT INTO `comment_on_manga` (`id`, `ID_manga`, `ID_reader`, `cmt`, `date`) VALUES
+(10, 1, 1, 'hello minna san', '2023-01-24'),
+(11, 1, 2, 'konichiwa test1 :))', '2023-01-24'),
+(12, 3, 2, 'まだコンテンツがないね', '2023-01-24'),
+(13, 1, 1, 'This manga seems interesting', '2023-01-24'),
+(14, 1, 1, 'hello', '2023-01-24'),
+(15, 4, 1, 'just test some comment here', '2023-01-24'),
+(16, 4, 3, 'comment service seems ok', '2023-01-24'),
+(17, 3, 9, 'Sign in successful', '2023-01-24'),
+(18, 3, 16, 'I\'ll add chapter later. Please be patient :))', '2023-01-24');
 
 -- --------------------------------------------------------
 
@@ -230,7 +247,10 @@ CREATE TABLE `reader` (
 INSERT INTO `reader` (`ID_reader`, `username`, `pwd`) VALUES
 (1, 'test1', '123'),
 (2, 'reader2', '123456'),
-(3, 'reader3', '123456');
+(3, 'reader3', '123456'),
+(4, 'bla', '123'),
+(9, 'test2', '123'),
+(16, 'hoanganh', '123');
 
 --
 -- Indexes for dumped tables
@@ -246,6 +266,7 @@ ALTER TABLE `chapter`
 -- Indexes for table `comment_on_manga`
 --
 ALTER TABLE `comment_on_manga`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_cmt_manga` (`ID_manga`),
   ADD KEY `fk_cmt_reader` (`ID_reader`);
 
@@ -279,7 +300,8 @@ ALTER TABLE `manga`
 -- Indexes for table `reader`
 --
 ALTER TABLE `reader`
-  ADD PRIMARY KEY (`ID_reader`);
+  ADD PRIMARY KEY (`ID_reader`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -290,6 +312,12 @@ ALTER TABLE `reader`
 --
 ALTER TABLE `chapter`
   MODIFY `ID_chapter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `comment_on_manga`
+--
+ALTER TABLE `comment_on_manga`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `image_content`
@@ -307,7 +335,7 @@ ALTER TABLE `manga`
 -- AUTO_INCREMENT for table `reader`
 --
 ALTER TABLE `reader`
-  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables

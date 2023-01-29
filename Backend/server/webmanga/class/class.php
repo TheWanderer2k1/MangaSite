@@ -42,4 +42,16 @@ class image{
         $this->path = $path;
     }
 }
+
+class comment{
+    public $username;
+    public $cmt;
+    public $date;
+
+    public function __construct($username, $cmt, $date){
+        $this->username = $username;
+        $this->cmt = $cmt;
+        $this->date = $date;
+    }
+}
 ?>

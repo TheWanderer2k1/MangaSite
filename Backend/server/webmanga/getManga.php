@@ -1,10 +1,10 @@
 <?php
     //echo $_GET['name'];
-    require('class.php');
+    require('./class/class.php');
 
     $arrOfChapter = [];
     try{
-        require('db.inc.php');
+        require('./connection/db.inc.php');
         $query = 'select * from manga where manga.name = "' . $_GET['name'] . '"';
         $result = $conn->query($query);
 

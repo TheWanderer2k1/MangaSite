@@ -1,10 +1,10 @@
 <?php
-    require('class.php');
+    require('./class/class.php');
 
     $arrOfManga = [];
 
     try{
-        require('db.inc.php');
+        require('./connection/db.inc.php');
 
         $query = 'select * from manga';
         $result = $conn->query($query);

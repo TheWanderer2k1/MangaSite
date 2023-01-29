@@ -1,9 +1,9 @@
 <?php
-    require('class.php');
+    require('./class/class.php');
 
     $arrOfManga = [];
     try{
-        require('db.inc.php');
+        require('./connection/db.inc.php');
         //SELECT * FROM manga WHERE manga.name like "%e%"
         if ($_GET['searchBy'] == 'byName'){
             $query = 'select * from manga where manga.name like "%' . $_GET['str'] . '%"';

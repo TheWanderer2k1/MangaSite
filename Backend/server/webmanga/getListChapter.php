@@ -1,11 +1,11 @@
 <?php
     //echo $_GET['name'];
-    require('class.php');
+    require('./class/class.php');
 
     $arrOfChapter = [];
     $arrOfImg = [];
     try{
-        require('db.inc.php');
+        require('./connection/db.inc.php');
         $query = 'select * from chapter inner join has_chapter on chapter.ID_chapter = has_chapter.ID_chapter where has_chapter.ID_manga = (select ID_manga from manga where name="' . $_GET['name'] .'")';
         $result1 = $conn->query($query);
         while($row1 = $result1->fetch_assoc()){

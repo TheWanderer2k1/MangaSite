@@ -36,11 +36,11 @@
         </div>
         <div class="collapse navbar-collapse justify-content-end"> 
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/login" name="loginOrSignup">Login</a>
-                <a class="nav-item nav-link" name="loginOrSignup">/</a>
-                <a class="nav-item nav-link" href="/signin" name="loginOrSignup">Sign up</a>
-                <a class="nav-item nav-link" id="username">Hi! {{username}}</a>
-                <a class="nav-item nav-link" (click)="onClickLogout()" id="Logout">Logout</a>
+                <a class="nav-item nav-link" href="/login" name="loginOrSignup" [hidden]="hide">Login</a>
+                <a class="nav-item nav-link" name="loginOrSignup" [hidden]="hide">/</a>
+                <a class="nav-item nav-link" href="/signin" name="loginOrSignup" [hidden]="hide">Sign up</a>
+                <a class="nav-item nav-link" id="username" [hidden]="!hide">Hi! {{username}}</a>
+                <a class="nav-item nav-link" (click)="onClickLogout()" id="Logout" [hidden]="!hide">Logout</a>
             </div>
         </div>  
     </nav>
